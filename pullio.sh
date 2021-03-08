@@ -93,20 +93,7 @@ send_discord_notification() {
 }
 
 send_generic_webhook() {
-    json='{
-    "container": "'${2}'",
-    "image": "'${5}'",
-    "avatar": "'${11}'",
-    "old_image_id": "'${9}'",
-    "new_image_id": "'${10}'",
-    "old_version": "'${3}'",
-    "new_version": "'${4}'",
-    "old_revision": "'${7}'",
-    "new_revision": "'${8}'",
-    "type": "'${1}'",
-    "timestamp": "'$(date -u +'%FT%T.%3NZ')'"
-    }'
-    curl -fsSL -H "User-Agent: Pullio" -H "Content-Type: application/json" -d "${json}" "${6}" > /dev/null
+    curl -X POST -H 'Content-Type: application/json' --data '{"alias":"pullio-bot","emoji":":pullio:","text":"Server: `MyServer` \nImage: `'${5}'` \nImageID: ```\n'${9:0:11}'\n ='$d_ind' '${10:0:11}'``` \nTimestamp: `'$(date -u +'%F_%T_%Z')'` ","attachments":[{"title":"Details","text":"Powered by: `https://github.com/adatamonk/pullioRC`","color":"#764FA5"}]}' "${6}" > /dev/null
 }
 
 export_env_vars() {
