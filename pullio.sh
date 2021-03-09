@@ -93,7 +93,7 @@ send_discord_notification() {
 }
 
 send_generic_webhook() {
-    curl -X POST -H 'Content-Type: application/json' --data '{"alias":"pullio-bot","emoji":":pullio:","text":"Server: `MyServer` \nImage: `'${5}'` \nImageID: ```\n'${9:0:11}'\n ='$d_ind' '${10:0:11}'``` \nTimestamp: `'$(date -u +'%F_%T_%Z')'` ","attachments":[{"title":"Details","text":"Powered by: `https://github.com/adatamonk/pullioRC`","color":"#764FA5"}]}' "${6}" > /dev/null
+    curl -X POST -H 'Content-Type: application/json' --data '{"alias":"pullio-bot","emoji":":pullio:","text":"Server: `MyServer` \nImage: `'${5}'` \nImageID: ```\n'${9:0:11}'\n ='$d_ind' '${10:0:11}'```","attachments":[{"title":"Details","text":"Timestamp: `'$(date -u +'%F_%T_%Z')'` ","color":"#764FA5"}]}' "${6}" > /dev/null
 }
 
 export_env_vars() {
